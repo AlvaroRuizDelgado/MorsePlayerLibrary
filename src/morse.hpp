@@ -10,7 +10,7 @@
 class Morse
 {
 public:
-    Morse() : dotDurationSec_(0.07) {};
+    Morse() : dotDurationSec_(0.06) {};
     int charToMorse(char *character);
     void textToMorse(std::string *text);
     int playTone(float durationSec);

@@ -7,7 +7,8 @@ void Morse::textToMorse(std::string *text) {
             c = c^0x20;
         }
         i = charToMorse(&c);
-        std::cout << c << ": " << morse_[i] << "\n";
+        std::cout << c; // << ": " << morse_[i] << "\n";
+        fflush(stdout);
         playMorse(&morse_[i]);
     }
 }

@@ -6,7 +6,6 @@
 #include <math.h>
 #include "portaudio.h"
 
-#define NUM_SECONDS   (5)
 #define SAMPLE_RATE   (44100)
 #define FRAMES_PER_BUFFER  (64)
 
@@ -19,15 +18,15 @@
 class Sine
 {
 public:
-    Sine() : stream(0), left_phase(0), right_phase(0)
+    Sine() : stream(0), left_phase(0), right_phase(0), frequency(880)
     {
+        const double TWO_PI {M_PI *2.};
+        const auto x = frequency * TABLE_SIZE / SAMPLE_RATE;
         /* initialise sinusoidal wavetable */
         for( int i=0; i<TABLE_SIZE; i++ )
         {
-            sine[i] = (float) sin( ((double)i/(double)TABLE_SIZE) * M_PI * 2. );
+            sine[i] = (float) sin( (x*(double)i/(double)TABLE_SIZE) * TWO_PI );
         }
-
-        sprintf( message, "No Message" );
     }
 
     bool open(PaDeviceIndex index)
@@ -176,7 +175,7 @@ private:
     float sine[TABLE_SIZE];
     int left_phase;
     int right_phase;
-    char message[20];
+    float frequency;
 };
 
 class ScopedPaHandler
