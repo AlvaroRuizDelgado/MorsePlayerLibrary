@@ -6,22 +6,14 @@
 #include <math.h>
 #include "portaudio.h"
 
-#define SAMPLE_RATE   (44100)
-#define FRAMES_PER_BUFFER  (64)
-
-#ifndef M_PI
-#define M_PI  (3.14159265)
-#endif
-
-#define TABLE_SIZE   (200)
-
 class Sine
 {
 public:
     Sine() : stream(0), left_phase(0), right_phase(0), frequency(880)
     {
-        const double TWO_PI {M_PI *2.};
+        const double TWO_PI {3.14159265 *2.};
         const auto x = frequency * TABLE_SIZE / SAMPLE_RATE;
+
         /* initialise sinusoidal wavetable */
         for( int i=0; i<TABLE_SIZE; i++ )
         {
@@ -172,6 +164,8 @@ private:
     }
 
     PaStream *stream;
+    static const auto TABLE_SIZE {200};
+    static const auto SAMPLE_RATE {44100};
     float sine[TABLE_SIZE];
     int left_phase;
     int right_phase;
