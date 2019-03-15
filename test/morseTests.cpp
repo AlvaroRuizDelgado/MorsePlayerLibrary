@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "morse.h"
+#include "../src/morse.hpp"
 
 namespace {
 
@@ -31,3 +31,8 @@ TEST_F(MorseTest, charToMorse)
 }
 
 } // namespace
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
