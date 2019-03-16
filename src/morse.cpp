@@ -15,7 +15,7 @@ void Morse::textToMorse(std::string *text) {
 
 int Morse::charToMorse(char *c) {
     int i = (int) (*c - '0');
-    if (0 < i && i < ALPHABET_SIZE) {
+    if (0 <= i && i < ALPHABET_SIZE) {
         return i;
     }
     return ALPHABET_SIZE-1;

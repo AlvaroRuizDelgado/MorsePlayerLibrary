@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <math.h>
-#include "portaudio.h"
+#include "../portaudio/portaudio.h"
 
 class Sine
 {
@@ -164,8 +164,8 @@ private:
     }
 
     PaStream *stream;
-    static const auto TABLE_SIZE {200};
-    static const auto SAMPLE_RATE {44100};
+    static const unsigned long TABLE_SIZE {200};
+    static const unsigned long SAMPLE_RATE {44100};
     float sine[TABLE_SIZE];
     int left_phase;
     int right_phase;

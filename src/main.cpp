@@ -3,9 +3,6 @@
 #include <sstream>
 #include "morse.hpp"
 
-#include "portaudio.h"
-#include "sine.h"
-
 int main(void) {
     
     Morse morse;
